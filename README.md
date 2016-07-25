@@ -17,7 +17,7 @@ my i3blocks Scripts For Arch Linux more simple and more useful
 |-----------------|------------|
 | bat.sh          | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/bat.png)
 | date.sh         | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/date.png)
-| focus.sh        | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/ficus.png)
+| focus.sh        | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/focus.png)
 | mem.sh          | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/mem.png)
 | mpd.sh          | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/mpd.png)
 | temp.sh         | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/temp.png)
