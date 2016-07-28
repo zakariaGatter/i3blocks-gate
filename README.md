@@ -159,3 +159,6 @@ command=~/.config/i3blocks/scripts/update.sh
 interval=600
 color=#FFCC99
 ```
+
+### [!] NOTE :
+if the scipt not useful no more is stop display like _Update Script and Network_ they will just disappear until they use again 
