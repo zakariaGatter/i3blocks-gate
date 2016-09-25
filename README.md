@@ -2,23 +2,23 @@
 
 my i3blocks Scripts For Arch Linux more simple and more useful 
 
-| i3blocks Script |      depends      | ScreenShot |
-|-----------------|-------------------|------------|
-| bat.sh          | ACPI              | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/bat.png)
-| date.sh         | ------            | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/date.png)
-| focus.sh        | Xdotool           | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/focus.png)
-| mem.sh          | ------            | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/mem.png)
-| mpd.sh          | Mpd, Ncmpcpp, Mpc | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/mpd.png)
-| temp.sh         | xsensors          | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/temp.png)
-| trash.sh        | ----              | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/trash.png)
-| vol.sh          | alsa              | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/vol.png)
-| cpu.sh          | sysstat           | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/cpu.png)
-| disk.sh         | ------            | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/disk.png)
-| key_l.sh        | ------            | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/key_layout.png)
-| mocp.sh         | Moc               | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/mocp.png)
-| net.sh          | ------            | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/net.png)
-| touchpad.sh     | ------            | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/touchpad.png)
-| update.sh       | checkupdates AUR  | ![img](https://github.com/zakariaGatter/i3blocks-gate/blob/master/screenshot/update.png)
+| i3blocks Script | Arch Depen        | Ubuntu Depen     | ScreenShot |
+|-----------------|-------------------|------------------|------------|
+| bat.sh          | ACPI              | ACPI             | ![img](./screenshot/bat.png)
+| date.sh         | ------            | ------           | ![img](./screenshot/date.png)
+| focus.sh        | Xdotool           | Xdotool          | ![img](./screenshot/focus.png)
+| mem.sh          | ------            | ------           | ![img](./screenshot/mem.png)
+| mpd.sh          | Mpd, Ncmpcpp, Mpc | Mpd, Ncmpcpp, Mpc| ![img](./screenshot/mpd.png)
+| temp.sh         | xsensors          | xsensors         | ![img](./screenshot/temp.png)
+| trash.sh        | ----              | -----            | ![img](./screenshot/trash.png)
+| vol.sh          | alsa              | alsa             | ![img](./screenshot/vol.png)
+| cpu.sh          | sysstat           | sysstat          | ![img](./screenshot/cpu.png)
+| disk.sh         | ------            | -----            | ![img](./screenshot/disk.png)
+| key_l.sh        | ------            | -----            | ![img](./screenshot/key_layout.png)
+| mocp.sh         | Moc               | Moc              | ![img](./screenshot/mocp.png)
+| net.sh          | ------            | -----            | ![img](./screenshot/net.png)
+| touchpad.sh     | ------            | -----            | ![img](./screenshot/touchpad.png)
+| update.sh       | checkupdates AUR  | -----            | ![img](./screenshot/update.png)
 
 ---
 
