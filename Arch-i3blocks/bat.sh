@@ -18,7 +18,7 @@ else
 fi
 
 if [ -z "$Bat" ];then 
-    bat=""
+    bat="$icon4 $Adapt"
 elif [ "$Bat" -gt "100" ];then 
      bat="$icon4 Full"
 elif [ "$Bat" -gt "90" ];then 
