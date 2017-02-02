@@ -1,6 +1,6 @@
-# i3Blocks Gate 
+# i3Blocks Gate
 
-my i3blocks Scripts For Arch Linux more simple and more useful 
+my i3blocks Scripts For Arch Linux more simple and more useful
 
 | i3blocks Script | Arch Depen        | Ubuntu Depen     | ScreenShot |
 |-----------------|-------------------|------------------|------------|
@@ -22,7 +22,7 @@ my i3blocks Scripts For Arch Linux more simple and more useful
 
 ---
 
-### Configuration 
+### Configuration
 
 ##### Battery
 ```sh
@@ -161,4 +161,10 @@ color=#FFCC99
 ```
 
 ### [!] NOTE :
-if the scipt not useful no more it will stop display like _Update Script and Network_ they will just disappear until they use again 
+- if the scipt not useful no more it will stop display like _Update Script and Network_ they will just disappear until they use again
+
+- In some cases you need install the icons:
+  - Ubuntu
+  ```bash
+  apt-get install fonts-font-awesome
+  ```
