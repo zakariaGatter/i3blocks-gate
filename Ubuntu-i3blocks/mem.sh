@@ -9,10 +9,10 @@ fi
 
 case "$1" in 
     "-m" )
-        echo -e " $Mem"
+        echo -e "  $Mem"
         ;;
     "-s" )
-        echo -e " $Swap"
+        echo -e "  $Swap"
         ;;
 esac 
 

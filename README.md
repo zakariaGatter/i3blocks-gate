@@ -9,16 +9,18 @@ my i3blocks Scripts For Arch Linux  And Ubuntu more simple and more useful
 | focus.sh        | Xdotool           | Xdotool          | ![img](./screenshot/focus.png)
 | mem.sh          | ------            | ------           | ![img](./screenshot/mem.png)
 | mpd.sh          | Mpd, Ncmpcpp, Mpc | Mpd, Ncmpcpp, Mpc| ![img](./screenshot/mpd.png)
-| temp.sh         | xsensors          | xsensors         | ![img](./screenshot/temp.png)
+| mocp.sh         | Moc               | Moc              | ![img](./screenshot/mocp.png)
+| temp.sh         | lm-sensors        | lm-sensors       | ![img](./screenshot/temp.png)
 | trash.sh        | ----              | -----            | ![img](./screenshot/trash.png)
 | vol.sh          | alsa-utils        | alsa-utils       | ![img](./screenshot/vol.png)
 | cpu.sh          | sysstat           | sysstat          | ![img](./screenshot/cpu.png)
 | disk.sh         | ------            | -----            | ![img](./screenshot/disk.png)
 | key_l.sh        | ------            | -----            | ![img](./screenshot/key_layout.png)
-| mocp.sh         | Moc               | Moc              | ![img](./screenshot/mocp.png)
 | net.sh          | ------            | -----            | ![img](./screenshot/net.png)
 | touchpad.sh     | ------            | -----            | ![img](./screenshot/touchpad.png)
 | update.sh       | checkupdates AUR  | -----            | ![img](./screenshot/update.png)
+| long.sh         | ------            | -----            | ![img](./screenshot/long.png)
+| uptime.sh       | ------            | -----            | ![img](./screenshot/uptime.png)
 
 ---
 
@@ -164,6 +166,22 @@ color=#4d4dff
 command=~/.config/i3blocks/Blocks/update.sh
 interval=600
 color=#FFCC99
+```
+
+##### Uptime
+```sh
+[Uptime]
+command=~/.config/i3blocks/Blocks/uptime.sh
+interval=60
+color=#FFCC00
+```
+
+##### Long
+```sh
+[Long]
+command=~/.config/i3blocks/Blocks/long.sh
+interval=600
+color=#FFFF99
 ```
 
 ### [!] NOTE :
