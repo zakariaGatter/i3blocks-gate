@@ -192,3 +192,6 @@ color=#FFFF99
   ```bash
   apt-get install fonts-font-awesome
   ```
+
+### [!] DONATE :
+WE DO NOT SELL SCRIPTS, if you wanna help us continue, please [DONATE](https://www.paypal.me/ZGatter/10)
