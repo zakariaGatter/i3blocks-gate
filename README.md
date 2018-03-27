@@ -45,36 +45,36 @@ blocks : Simple script Collection for i3blocks
             (1)  :
                 -  Show CPU Info * Deps : (Mpstat)
                     usage : blocks 1 "$ICON"
-	    (2)  :
-		-  Show Multi Cpu Info * Deps : (Mpstat)
-		    usage : blocks 2 "$ICON"
-	    (3)  :
-		-  Show Memory Usage * Deps : (Free)
-		    usage : blocks 3 "$ICON"
-	    (4)  :
-		-  Show Swap Usage * Deps : (Free)
-		    usage : blocks 4 "$ICON"
-	    (5)  :
-		-  Show Date and Time * Deps : (Date)
-		    usage : blocks 5 "$ICON"
-	    (6)  :
-		-  Show Battery Status * Deps : (acpi)
-		    usage : blocks 6  ( You can't change battery icon )
-	    (7)  :
-		-  Show Disk Usage * Deps : (df)
-		    usage : blocks 7 "$PARTITION" "$ICON" 
-		    example : blocks 7 "/home" ""
-	    (8)  :
-		-  Show Keyboard Layout
-		    usage : blocks 8 "$ICON"
-	    (9)  :
-		-  Show System language
-		    usage : blocks 9 "$ICON"
-	    (10) :
-		-  Show Machine Uptime * Deps : (uptime)
-		    usage : blocks 10 "$ICON"
-	    (11) :
-		-  Show Trash Size * Deps : (du)
+            (2)  :
+                -  Show Multi Cpu Info * Deps : (Mpstat)
+                    usage : blocks 2 "$ICON"
+            (3)  :
+                -  Show Memory Usage * Deps : (Free)
+                    usage : blocks 3 "$ICON"
+            (4)  :
+                -  Show Swap Usage * Deps : (Free)
+                    usage : blocks 4 "$ICON"
+            (5)  :
+                -  Show Date and Time * Deps : (Date)
+                    usage : blocks 5 "$ICON"
+            (6)  :
+                -  Show Battery Status * Deps : (acpi)
+                    usage : blocks 6  ( You can't change battery icon )
+            (7)  :
+                -  Show Disk Usage * Deps : (df)
+                    usage : blocks 7 "$PARTITION" "$ICON" 
+                    example : blocks 7 "/home" ""
+            (8)  :
+                -  Show Keyboard Layout
+                    usage : blocks 8 "$ICON"
+            (9)  :
+                -  Show System language
+                    usage : blocks 9 "$ICON"
+            (10) :
+                -  Show Machine Uptime * Deps : (uptime)
+                    usage : blocks 10 "$ICON"
+            (11) :
+                -  Show Trash Size * Deps : (du)
 		    usage : blocks 11 "$ICON"
 	    (12) :
 		-  Show Window Usage * Deps : (xdotool)
