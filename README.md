@@ -76,71 +76,71 @@ blocks : Simple script Collection for i3blocks
             (11) :
                 -  Show Trash Size * Deps : (du)
 		    usage : blocks 11 "$ICON"
-	    (12) :
-		-  Show Window Usage * Deps : (xdotool)
+            (12) :
+	        -  Show Window Usage * Deps : (xdotool)
 		    usage : blocks 12 "$ICON"
-	    (13) :
-		-  Show Mocp playing song and status * Deps : (moc)
+            (13) :
+	        -  Show Mocp playing song and status * Deps : (moc)
 		    usage : blocks 13 "$ICON"
-	    (14) :
-		-  Show mpd Playing song and status * Deps : (mpd; ncmpccp, mpc)
+            (14) :
+	        -  Show mpd Playing song and status * Deps : (mpd; ncmpccp, mpc)
 		    usage : blocks 14 "$ICON"
-	    (15) :
-		-  Show Cpu Temp * Deps : (xsenser)
+            (15) :
+	        -  Show Cpu Temp * Deps : (xsenser)
 		    usage : blocks 15 "$ICON"
-	    (16) :
-		-  Show Gpu Temp * Deps : (xsenser)
+            (16) :
+	        -  Show Gpu Temp * Deps : (xsenser)
 		    usage : blocks 16 "$ICON"
-	    (17) :
-		-  Show Touchpad status * Deps : (sysclient)
+            (17) :
+	        -  Show Touchpad status * Deps : (sysclient)
 		    usage : blocks 17 "$ICON"
-	    (18) :
-		-  Show Volume Status * Deps : (alsa)
-		    usage : blocks 18  ( You can't change battery icon )
-	    (19) :
-		-  Show Wifi info ; ip ; connected name * Deps : (ifconfig; nmcli)
-		    usage : blocks 19 "$ICON"
-	    (20) :
-		-  Show Ethernet info ; ip ; connected name *Deps : (ifconfig; nmcli)
-		    usage : blocks 20 "$ICON"
-	    (21) :
-		-  Show prosses use by this User * Deps : (ps)
-		    usage : blocks 21 "$ICON"
-	    (22) :
-		-  Show System Kerenel * Deps : (uname)
-		    usage : blocks 22 "$ICON"
-	    (23) :
-		-  Show Usb Plug in your Computer * Deps : (lsblk)
-		    usage : blocks 23 "$ICON"
-	    (24) :
-		-  Show Total pkgs install in your system * Deps : (dpkg)
-		    usage : blocks 24 "$ICON"
-	    (25) :
-		-  Check if there is any Update in your system * Deps : (apt-get)
+            (18) :
+	        -  Show Volume Status * Deps : (alsa)
+		     usage : blocks 18  ( You can't change battery icon )
+            (19) :
+	        -  Show Wifi info ; ip ; connected name * Deps : (ifconfig; nmcli)
+		     usage : blocks 19 "$ICON
+            (20) :
+	        -  Show Ethernet info ; ip ; connected name *Deps : (ifconfig; nmcli)
+		     usage : blocks 20 "$ICON"
+            (21) :
+	        -  Show prosses use by this User * Deps : (ps)
+		     usage : blocks 21 "$ICON"
+            (22) :
+	        -  Show System Kerenel * Deps : (uname)
+		     usage : blocks 22 "$ICON"
+            (23) :
+	        -  Show Usb Plug in your Computer * Deps : (lsblk)
+		     usage : blocks 23 "$ICON"
+            (24) :
+	        -  Show Total pkgs install in your system * Deps : (dpkg)
+		     usage : blocks 24 "$ICON"
+            (25) :
+	        -  Check if there is any Update in your system * Deps : (apt-get)
 		    usage : blocks 25 "$ICON"
-		    Configuration : 
-			If you want auto check update you can add this line to "/etc/rc.local" file before **exit 0**
+		    Configuration :
+		        If you want auto check update you can add this line to "/etc/rc.local" file before **exit 0**
 			```sudo apt-get -q update```` **I'm not responsible for any damage happen to your system**
-	    (26) :
-		-  Show ufw Status * Deps : (ufw)
+            (26) :
+	        -  Show ufw Status
 		    usage : blocks 26 "$ICON"
-	    (27) :
-		-  Show number lock status * Deps : (xset)
+            (27) :
+	        -  Show number lock status * Deps : (xset)
 		    usage : blocks 27 "$ICON"
-	    (28) :
-		-  Show Bluetooth Status 
+            (28) :
+	        -  Show Bluetooth Status 
 		    usage : blocks 28 "$ICON"
-	    (29) :
-		-  Show Caps Lock Status * Deps : (xset)
+            (29) :
+	        -  Show Caps Lock Status * Deps : (xset)
 		    usage : blocks 29 "$ICON"
-	    (30) :
-		-  Show X screensaver status
+            (30) :
+	        -  Show X screensaver status
 		    usage : blocks 30 "$ICON"
-	    (31) :
-		-  Calculate Mount Points on System 
+            (31) :
+	        -  Calculate Mount Points on System 
 		    usage : blocks 31 "$ICON"
-	    (-h): 
-		- Show this help message 
+             (-h): 
+                - Show this help message 
 ```
 ---
 
