@@ -1,30 +1,159 @@
 # i3Blocks Gate 
 
-my i3blocks Scripts For Arch Linux  And Ubuntu more simple and more useful 
+my i3blocks Scripts For Ubuntu More Simple and More useful (Arch Linux Soon)
 
-| i3blocks Script | Arch Depen        | Ubuntu Depen     | ScreenShot |
-|-----------------|-------------------|------------------|------------|
-| bat.sh          | ACPI              | ACPI             | ![img](./screenshot/bat.png)
-| date.sh         | ------            | ------           | ![img](./screenshot/date.png)
-| focus.sh        | Xdotool           | Xdotool          | ![img](./screenshot/focus.png)
-| mem.sh          | ------            | ------           | ![img](./screenshot/mem.png)
-| mpd.sh          | Mpd, Ncmpcpp, Mpc | Mpd, Ncmpcpp, Mpc| ![img](./screenshot/mpd.png)
-| mocp.sh         | Moc               | Moc              | ![img](./screenshot/mocp.png)
-| temp.sh         | lm-sensors        | lm-sensors       | ![img](./screenshot/temp.png)
-| trash.sh        | ----              | -----            | ![img](./screenshot/trash.png)
-| vol.sh          | alsa-utils        | alsa-utils       | ![img](./screenshot/vol.png)
-| cpu.sh          | sysstat           | sysstat          | ![img](./screenshot/cpu.png)
-| disk.sh         | ------            | -----            | ![img](./screenshot/disk.png)
-| key_l.sh        | ------            | -----            | ![img](./screenshot/key_layout.png)
-| net.sh          | ------            | -----            | ![img](./screenshot/net.png)
-| touchpad.sh     | ------            | -----            | ![img](./screenshot/touchpad.png)
-| update.sh       | checkupdates AUR  | -----            | ![img](./screenshot/update.png)
-| long.sh         | ------            | -----            | ![img](./screenshot/long.png)
-| uptime.sh       | ------            | -----            | ![img](./screenshot/uptime.png)
+| i3blocks Script |  Screen Shot |
+|-----------------|--------------|
+| Blocks.sh 1     | ![img](./screenshot/cpu.png)
+| Blocks.sh 2     | ![img](./screenshot/cpus.png)
+| Blocks.sh 3     | ![img](./screenshot/mem.png)
+| Blocks.sh 4     | ![img](./screenshot/swap.png)
+| Blocks.sh 5     | ![img](./screenshot/date.png)
+| Blocks.sh 6     | ![img](./screenshot/bat.png)
+| Blocks.sh 7     | ![img](./screenshot/disk.png)
+| Blocks.sh 8     | ![img](./screenshot/key.png)
+| Blocks.sh 9     | ![img](./screenshot/long.png)
+| Blocks.sh 10    | ![img](./screenshot/uptime.png)
+| Blocks.sh 11    | ![img](./screenshot/trash.png)
+| Blocks.sh 12    | ![img](./screenshot/window.png)
+| Blocks.sh 13    | ![img](./screenshot/mocp.png)
+| Blocks.sh 14    | ![img](./screenshot/mpd.png)
+| Blocks.sh 15    | ![img](./screenshot/cpu-temp.png)
+| Blocks.sh 16    | ![img](./screenshot/gpu-temp.png)
+| Blocks.sh 17    | ![img](./screenshot/mouse.png)
+| Blocks.sh 18    | ![img](./screenshot/vol.png)
+| Blocks.sh 19    | ![img](./screenshot/wifi.png)
+| Blocks.sh 20    | ![img](./screenshot/ethernet.png)
+| Blocks.sh 21    | ![img](./screenshot/ps.png)
+| Blocks.sh 22    | ![img](./screenshot/kernel.png)
+| Blocks.sh 23    | ![img](./screenshot/usb.png)
+| Blocks.sh 24    | ![img](./screenshot/pkgs.png)
+| Blocks.sh 25    | ![img](./screenshot/update.png)
+| Blocks.sh 26    | ![img](./screenshot/ufw.png)
+| Blocks.sh 27    | ![img](./screenshot/numlock.png)
+| Blocks.sh 28    | ![img](./screenshot/bluetooth.png)
+| Blocks.sh 29    | ![img](./screenshot/caplock.png)
+| Blocks.sh 30    | ![img](./screenshot/x-screensaver.png)
+| Blocks.sh 31    | ![img](./screenshot/mount.png)
+
+---
+## Help Dialog
+```
+blocks : Simple script Collection for i3blocks 
+
+	Utils : 
+	    (1)  :
+		-  Show CPU Info * Deps : (Mpstat)
+		    usage : blocks 1 "$ICON"
+	    (2)  :
+		-  Show Multi Cpu Info * Deps : (Mpstat)
+		    usage : blocks 2 "$ICON"
+	    (3)  :
+		-  Show Memory Usage * Deps : (Free)
+		    usage : blocks 3 "$ICON"
+	    (4)  :
+		-  Show Swap Usage * Deps : (Free)
+		    usage : blocks 4 "$ICON"
+	    (5)  :
+		-  Show Date and Time * Deps : (Date)
+		    usage : blocks 5 "$ICON"
+	    (6)  :
+		-  Show Battery Status * Deps : (acpi)
+		    usage : blocks 6  ( You can't change battery icon )
+	    (7)  :
+		-  Show Disk Usage * Deps : (df)
+		    usage : blocks 7 "$PARTITION" "$ICON" 
+		    example : blocks 7 "/home" ""
+	    (8)  :
+		-  Show Keyboard Layout
+		    usage : blocks 8 "$ICON"
+	    (9)  :
+		-  Show System language
+		    usage : blocks 9 "$ICON"
+	    (10) :
+		-  Show Machine Uptime * Deps : (uptime)
+		    usage : blocks 10 "$ICON"
+	    (11) :
+		-  Show Trash Size * Deps : (du)
+		    usage : blocks 11 "$ICON"
+	    (12) :
+		-  Show Window Usage * Deps : (xdotool)
+		    usage : blocks 12 "$ICON"
+	    (13) :
+		-  Show Mocp playing song and status * Deps : (moc)
+		    usage : blocks 13 "$ICON"
+	    (14) :
+		-  Show mpd Playing song and status * Deps : (mpd; ncmpccp, mpc)
+		    usage : blocks 14 "$ICON"
+	    (15) :
+		-  Show Cpu Temp * Deps : (xsenser)
+		    usage : blocks 15 "$ICON"
+	    (16) :
+		-  Show Gpu Temp * Deps : (xsenser)
+		    usage : blocks 16 "$ICON"
+	    (17) :
+		-  Show Touchpad status * Deps : (sysclient)
+		    usage : blocks 17 "$ICON"
+	    (18) :
+		-  Show Volume Status * Deps : (alsa)
+		    usage : blocks 18  ( You can't change battery icon )
+	    (19) :
+		-  Show Wifi info ; ip ; connected name * Deps : (ifconfig; nmcli)
+		    usage : blocks 19 "$ICON"
+	    (20) :
+		-  Show Ethernet info ; ip ; connected name *Deps : (ifconfig; nmcli)
+		    usage : blocks 20 "$ICON"
+	    (21) :
+		-  Show prosses use by this User * Deps : (ps)
+		    usage : blocks 21 "$ICON"
+	    (22) :
+		-  Show System Kerenel * Deps : (uname)
+		    usage : blocks 22 "$ICON"
+	    (23) :
+		-  Show Usb Plug in your Computer * Deps : (lsblk)
+		    usage : blocks 23 "$ICON"
+	    (24) :
+		-  Show Total pkgs install in your system * Deps : (dpkg)
+		    usage : blocks 24 "$ICON"
+	    (25) :
+		-  Check if there is any Update in your system * Deps : (apt-get)
+		    usage : blocks 25 "$ICON"
+		    Configuration : 
+			If you want auto check update you can add this line to "/etc/rc.local" file before **exit 0**
+			```sudo apt-get -q update```` **I'm not responsible for any damage happen to your system**
+	    (26) :
+		-  Show ufw Status * Deps : (ufw)
+		    usage : blocks 26 "$ICON"
+	    (27) :
+		-  Show number lock status * Deps : (xset)
+		    usage : blocks 27 "$ICON"
+	    (28) :
+		-  Show Bluetooth Status 
+		    usage : blocks 28 "$ICON"
+	    (29) :
+		-  Show Caps Lock Status * Deps : (xset)
+		    usage : blocks 29 "$ICON"
+	    (30) :
+		-  Show X screensaver status
+		    usage : blocks 30 "$ICON"
+	    (31) :
+		-  Calculate Mount Points on System 
+		    usage : blocks 31 "$ICON"
+	    (-h): 
+		- Show this help message 
+```
+---
+
+### What's New 
+
+* Give You Access to change Icons with text or any other symbol 
+* Add new script to show more information about your System 
+* ALL-IN-ONE Gather All the Scripts in one place for easy Access 
+* Add Help Dialog to Give You Information You need to know 
 
 ---
 
-### Instalation 
+### Installation 
 
 ```bash 
 git clone https://github.com/zakariaGatter/i3blocks-gate ~/.config/i3blocks/Blocks 
@@ -32,166 +161,17 @@ git clone https://github.com/zakariaGatter/i3blocks-gate ~/.config/i3blocks/Bloc
 
 ### Configuration 
 
-##### Battery
+##### configuration
 ```sh
 [Bat]
-command=~/.config/i3blocks/Blocks/bat.sh
-interval=30
-color=#CC0099
-```
-
-##### Time
-```sh
-[Time]
-command=~/.config/i3blocks/Blocks/date.sh
-interval=60
-color=#6699FF
-```
-
-##### Focus Window
-```sh
-[Focus]
-command=~/.config/i3blocks/Blocks/focus.sh
-interval=1
-color=#FF6666
-```
-
-##### Ram Memory
-```sh
-[Ram]
-command=~/.config/i3blocks/Blocks/mem.sh -m
-interval=10
-color=#FF6600
-```
-
-##### Swap Memory
-```sh
-[Swap]
-command=~/.config/i3blocks/Blocks/mem.sh -s
-interval=10
-color=#6699FF
-```
-
-##### MPD
-```sh
-[MPD]
-command=~/.config/i3blocks/Blocks/mpd.sh
+command=~/.config/i3blocks/Blocks/Ubuntu/block.sh [1-31]
 interval=5
-color=#66CCFF
-```
-
-##### Cpu Temp
-```sh
-[Temp]
-command=~/.config/i3blocks/Blocks/temp.sh
-interval=60
-color=#6699FF
-```
-
-##### Trash
-```sh
-[Trash]
-command=~/.config/i3blocks/Blocks/trash.sh
-interval=60
-color=#c68c53
-```
-
-##### Volume
-```sh
-[Vol]
-command=~/.config/i3blocks/Blocks/Vol.sh
-interval=3
-color=#9933FF
-```
-
-##### Cpu usage
-```sh
-[Cpu]
-command=~/.config/i3blocks/Blocks/cpu.sh
-interval=5
-color=#FFFF66
-```
-
-##### Disk usage
-```sh
-[Disk]
-command=~/.config/i3blocks/Blocks/disk.sh /
-interval=60
-color=#CC6699
-```
-
-##### Keyboard Layout
-```sh
-[Key]
-command=~/.config/i3blocks/Blocks/key_l.sh
-interval=once
-color=#33ff33
-```
-
-##### Mocp
-```sh
-[Mocp]
-command=~/.config/i3blocks/Blocks/mocp.sh
-interval=60
-color=#66CCFF
-```
-
-##### Net Ethernet
-```sh
-[Ether]
-command=~/.config/i3blocks/Blocks/net.sh -e
-interval=10
-color=#CC99FF
-```
-
-##### Net Wifi
-```sh
-[Ether]
-command=~/.config/i3blocks/Blocks/net.sh -w
-interval=10
-color=#CC99FF
-```
-
-##### Touchpad
-```sh
-[Touchpad]
-command=~/.config/i3blocks/Blocks/touchpad.sh
-interval=10
-color=#4d4dff
-```
-
-##### Update
-```sh
-[Update]
-command=~/.config/i3blocks/Blocks/update.sh
-interval=600
-color=#FFCC99
-```
-
-##### Uptime
-```sh
-[Uptime]
-command=~/.config/i3blocks/Blocks/uptime.sh
-interval=60
-color=#FFCC00
-```
-
-##### Long
-```sh
-[Long]
-command=~/.config/i3blocks/Blocks/long.sh
-interval=600
-color=#FFFF99
+color=#XXXXXX
 ```
 
 ### [!] NOTE :
-- if the scipt not useful no more it will stop display like _Update Script and Network_ they will just disappear until they use again
-
 - In some cases you need install the icons:
   - Ubuntu
-  ```bash
-  apt-get install fonts-font-awesome
+  ```sh
+  apt-get install fonts-font-awesome lm-senser alsa-utils acpi xdotool mpd mpc ncmpcpp moc sysstat
   ```
-
-### [!] DONATE :
-WE DO NOT SELL SCRIPTS, if you wanna help us continue, please [DONATE](https://www.paypal.me/ZGatter/10)
