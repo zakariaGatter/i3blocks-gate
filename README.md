@@ -41,10 +41,10 @@ my i3blocks Scripts For Ubuntu More Simple and More useful (Arch Linux Soon)
 ```
 blocks : Simple script Collection for i3blocks 
 
-	Utils : 
-	    (1)  :
-		-  Show CPU Info * Deps : (Mpstat)
-		    usage : blocks 1 "$ICON"
+        Utils : 
+            (1)  :
+                -  Show CPU Info * Deps : (Mpstat)
+                    usage : blocks 1 "$ICON"
 	    (2)  :
 		-  Show Multi Cpu Info * Deps : (Mpstat)
 		    usage : blocks 2 "$ICON"
