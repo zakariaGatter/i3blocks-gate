@@ -169,6 +169,13 @@ interval=5
 color=#XXXXXX
 ```
 
+### Support 
+
+[Fiverr](https://www.fiverr.com/zakariagatter)
+
+[Donate](https://www.paypal.me/ZGatter)
+
+
 ### [!] NOTE :
 - In some cases you need install the icons:
   - Ubuntu
