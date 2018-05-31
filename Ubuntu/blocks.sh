@@ -6,7 +6,7 @@ _CPU_ () {
 
     [ -z "$1" ] && icon="" || icon="$1"
 
-    cpu_usage=$(mpstat -P ALL | awk '/all/{print $4}');
+    cpu_usage=$(mpstat -P ALL | awk '/all/{print $3}');
     echo "$icon $cpu_usage%"
 }
 
@@ -28,7 +28,7 @@ _MEM_ () {
 
     [ -z "$1" ] && icon="" || icon="$1"
 
-    mem_usage=$(free -h | awk '/^Mem:/{print $3}');
+    mem_usage=$(free -h | awk '/^Mem:/{print $3"/"$2}');
     echo "$icon $mem_usage"
 }
 
@@ -199,7 +199,7 @@ _GPU_TEMP_ () {
 
     [ -z "$1" ] && icon="" || icon="$1"
 
-    gpu_temp=$(sensors | awk '/^GPU/{print $2}' | tr -d "+" );
+    gpu_temp=$(sensors | awk '/^GPU/{print $2}' | tail -1 | tr -d "+" );
 
     echo "$icon $gpu_temp"
 }
@@ -246,7 +246,7 @@ _WIFI_ () {
 (nmcli d | awk '/wifi/{print $1}') | while read W ; do 
     W_C=$(nmcli d | awk '/'"$W"'/{print $3}');
     W_N=$(nmcli d | awk '/'"$W"'/{print $4}');
-    W_IP=$(ifconfig "$W" | awk '/inet addr/{print $2}' | cut -d: -f2);
+    W_IP=$(ifconfig "$W" | awk '/inet /{print $2}' | cut -d: -f2);
 
     [ "$W_C" == "connected" ] && echo -n "$icon $W_IP ($W_N) " || echo -n "$icon --- "
 
@@ -376,7 +376,7 @@ _MOUNT_ () {
 
     [ -z "$1" ] && icon="" || icon="$1"
 
-    MP=$(cat /proc/mounts | grep "^/dev/s*" | awk '{print $1}' | wc -l)
+    MP=$(cat /proc/mounts | grep "^/dev/s*" | wc -l)
 
 echo "$icon $MP"
 }
@@ -384,7 +384,7 @@ echo "$icon $MP"
 #Usage Dialog 
 USAGE () {
 echo -e "
-$0 : Simple script Collaction for i3blocks 
+$(basename $0) : Simple script Collaction for i3blocks 
 
 	Utils : 
 	    (1)  :
