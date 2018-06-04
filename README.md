@@ -180,5 +180,5 @@ color=#XXXXXX
 - In some cases you need install the icons:
   - Ubuntu
   ```sh
-  apt-get install fonts-font-awesome lm-senser alsa-utils acpi xdotool mpd mpc ncmpcpp moc sysstat
+  apt-get install fonts-font-awesome lm-senser alsa-utils acpi xdotool mpd mpc ncmpcpp moc sysstat suckless-tools
   ```
