@@ -15,11 +15,13 @@ _CPUS_ () {
 
     [ -z "$1" ] && icon="" || icon="$1"
 
-    cpus_usage=$(mpstat -P ALL \
+    cpus_usage=$(mpstat -P ALL 1 1 \
+	| grep "^Average" \
 	| cut -d " " -f3- \
 	| column -t \
-	| awk '/^[0-9]/{print $2"%"}' \
+	| awk '/^[0-9]/{printf "%.2f% ", 100-$11"%"}' \
 	| tr "\n" " ");
+
     echo "$icon $cpus_usage"
 }
 
