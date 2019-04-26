@@ -1,184 +1,116 @@
-# i3Blocks Gate 
+# i3Blocks Gate
 
-my i3blocks Scripts For Ubuntu More Simple and More useful (Arch Linux Soon)
+Is a all in one collection of small script show you useful information about your system
 
-| i3blocks Script |  Screen Shot |
-|-----------------|--------------|
-| Blocks.sh 1     | ![img](./screenshot/cpu.png)
-| Blocks.sh 2     | ![img](./screenshot/cpus.png)
-| Blocks.sh 3     | ![img](./screenshot/mem.png)
-| Blocks.sh 4     | ![img](./screenshot/swap.png)
-| Blocks.sh 5     | ![img](./screenshot/date.png)
-| Blocks.sh 6     | ![img](./screenshot/bat.png)
-| Blocks.sh 7     | ![img](./screenshot/disk.png)
-| Blocks.sh 8     | ![img](./screenshot/key.png)
-| Blocks.sh 9     | ![img](./screenshot/long.png)
-| Blocks.sh 10    | ![img](./screenshot/uptime.png)
-| Blocks.sh 11    | ![img](./screenshot/trash.png)
-| Blocks.sh 12    | ![img](./screenshot/window.png)
-| Blocks.sh 13    | ![img](./screenshot/mocp.png)
-| Blocks.sh 14    | ![img](./screenshot/mpd.png)
-| Blocks.sh 15    | ![img](./screenshot/cpu-temp.png)
-| Blocks.sh 16    | ![img](./screenshot/gpu-temp.png)
-| Blocks.sh 17    | ![img](./screenshot/mouse.png)
-| Blocks.sh 18    | ![img](./screenshot/vol.png)
-| Blocks.sh 19    | ![img](./screenshot/wifi.png)
-| Blocks.sh 20    | ![img](./screenshot/ethernet.png)
-| Blocks.sh 21    | ![img](./screenshot/ps.png)
-| Blocks.sh 22    | ![img](./screenshot/kernel.png)
-| Blocks.sh 23    | ![img](./screenshot/usb.png)
-| Blocks.sh 24    | ![img](./screenshot/pkgs.png)
-| Blocks.sh 25    | ![img](./screenshot/update.png)
-| Blocks.sh 26    | ![img](./screenshot/ufw.png)
-| Blocks.sh 27    | ![img](./screenshot/numlock.png)
-| Blocks.sh 28    | ![img](./screenshot/bluetooth.png)
-| Blocks.sh 29    | ![img](./screenshot/caplock.png)
-| Blocks.sh 30    | ![img](./screenshot/x-screensaver.png)
-| Blocks.sh 31    | ![img](./screenshot/mount.png)
+## Installation requires:
+    * __Font Awesome__
+    * __lm-senser__
+    * __alsa-utils__
+    * __acpi__
+    * __mpd__
+    * __mpc__
+    * __ncmpcpp__
+    * __moc__
+    * __sysstat__
+    * __cmus__
+    * __xdg-utils__
+    * __ifconfig__
 
 ---
 ## Help Dialog
 ```
-blocks : Simple script Collection for i3blocks 
+there is 35 deffirent script to use
 
-        Utils : 
-            (1)  :
-                -  Show CPU Info * Deps : (Mpstat)
-                    usage : blocks 1 "$ICON"
-            (2)  :
-                -  Show Multi Cpu Info * Deps : (Mpstat)
-                    usage : blocks 2 "$ICON"
-            (3)  :
-                -  Show Memory Usage * Deps : (Free)
-                    usage : blocks 3 "$ICON"
-            (4)  :
-                -  Show Swap Usage * Deps : (Free)
-                    usage : blocks 4 "$ICON"
-            (5)  :
-                -  Show Date and Time * Deps : (Date)
-                    usage : blocks 5 "$ICON"
-            (6)  :
-                -  Show Battery Status * Deps : (acpi)
-                    usage : blocks 6  ( You can't change battery icon )
-            (7)  :
-                -  Show Disk Usage * Deps : (df)
-                    usage : blocks 7 "$PARTITION" "$ICON" 
-                    example : blocks 7 "/home" ""
-            (8)  :
-                -  Show Keyboard Layout
-                    usage : blocks 8 "$ICON"
-            (9)  :
-                -  Show System language
-                    usage : blocks 9 "$ICON"
-            (10) :
-                -  Show Machine Uptime * Deps : (uptime)
-                    usage : blocks 10 "$ICON"
-            (11) :
-                -  Show Trash Size * Deps : (du)
-		    usage : blocks 11 "$ICON"
-            (12) :
-	        -  Show Window Usage * Deps : (xdotool)
-		    usage : blocks 12 "$ICON"
-            (13) :
-	        -  Show Mocp playing song and status * Deps : (moc)
-		    usage : blocks 13 "$ICON"
-            (14) :
-	        -  Show mpd Playing song and status * Deps : (mpd; ncmpccp, mpc)
-		    usage : blocks 14 "$ICON"
-            (15) :
-	        -  Show Cpu Temp * Deps : (xsenser)
-		    usage : blocks 15 "$ICON"
-            (16) :
-	        -  Show Gpu Temp * Deps : (xsenser)
-		    usage : blocks 16 "$ICON"
-            (17) :
-	        -  Show Touchpad status * Deps : (sysclient)
-		    usage : blocks 17 "$ICON"
-            (18) :
-	        -  Show Volume Status * Deps : (alsa)
-		     usage : blocks 18  ( You can't change battery icon )
-            (19) :
-	        -  Show Wifi info ; ip ; connected name * Deps : (ifconfig; nmcli)
-		     usage : blocks 19 "$ICON
-            (20) :
-	        -  Show Ethernet info ; ip ; connected name *Deps : (ifconfig; nmcli)
-		     usage : blocks 20 "$ICON"
-            (21) :
-	        -  Show prosses use by this User * Deps : (ps)
-		     usage : blocks 21 "$ICON"
-            (22) :
-	        -  Show System Kerenel * Deps : (uname)
-		     usage : blocks 22 "$ICON"
-            (23) :
-	        -  Show Usb Plug in your Computer * Deps : (lsblk)
-		     usage : blocks 23 "$ICON"
-            (24) :
-	        -  Show Total pkgs install in your system * Deps : (dpkg)
-		     usage : blocks 24 "$ICON"
-            (25) :
-	        -  Check if there is any Update in your system * Deps : (apt-get)
-		    usage : blocks 25 "$ICON"
-		    Configuration :
-		        If you want auto check update you can add this line to "/etc/rc.local" file before **exit 0**
-			```sudo apt-get -q update```` **I'm not responsible for any damage happen to your system**
-            (26) :
-	        -  Show ufw Status
-		    usage : blocks 26 "$ICON"
-            (27) :
-	        -  Show number lock status * Deps : (xset)
-		    usage : blocks 27 "$ICON"
-            (28) :
-	        -  Show Bluetooth Status 
-		    usage : blocks 28 "$ICON"
-            (29) :
-	        -  Show Caps Lock Status * Deps : (xset)
-		    usage : blocks 29 "$ICON"
-            (30) :
-	        -  Show X screensaver status
-		    usage : blocks 30 "$ICON"
-            (31) :
-	        -  Calculate Mount Points on System 
-		    usage : blocks 31 "$ICON"
-             (-h): 
-                - Show this help message 
+Almost all script use the same syntax
+    i3b-gate [NUMBER] [ICON]
+
+Except :
+    7  : i3b-gate 7 [MOINT_POINT] [ICON]
+    12 : i3b-gate 12 [NUMBER] [ICON]
+
+No Argument :
+    34 : You give no argumment
+    6  : You give no argumment
+    18 : You give no argumment
+
+Explaine :
+    If you use 34, you get a status line about all workspaces u used on i3
+    34 don't show you the None used Workspace
+
+    Example : [1] 2 [*3]
+
+    [1] : Unfocued Workspaces
+    2   : the focused Workspace
+    [*3] : The Urgent workspace
+
+each 35 script and what they do
+
+ 1 : Show CPU Usage
+ 2 : Show ALL CPUs Usage
+ 3 : Show MEM Usage
+ 4 : Show SWAP Usage
+ 5 : Show Date and Time
+ 6 : Show Battery Usage ans status
+ 7 : Show Disk Usage
+ 8 : Show Keyboard layout
+ 9 : Show System Language
+10 : Show Uptime
+11 : Show Trash Size
+12 : Show Window Title
+13 : Show Music Status on (Moc)
+14 : Show Music Status on (Mpd)
+15 : Show CPU TEMP
+16 : Show GPU TEMP
+17 : Show Touchpad Status
+18 : show Volume Status
+19 : Show Wifi Info
+20 : Show Ethernet Info
+21 : Show Number of Prosses use by this current user
+22 : Show System Kernel
+23 : Show Usb Pluged in your system
+24 : Show Total packages in Your system (Ubuntu)
+25 : Show if there is any updates (Ubuntu)
+26 : Show UFW Status
+27 : Show NumberLock status
+28 : Show Bluetooth Status
+29 : Show CapsLock Status
+30 : Show x screensaver Status
+31 : Show Number of Mointed Points on System
+32 : Show Music Status on (CMUS)
+33 : Show Apparmor Status
+34 : Show i3 Workspaces Status
+35 : Show User NAME
+36 : Show Total packages in Your system (Arch)
 ```
 ---
 
-### What's New 
+### What's New
 
-* Give You Access to change Icons with text or any other symbol 
-* Add new script to show more information about your System 
-* ALL-IN-ONE Gather All the Scripts in one place for easy Access 
-* Add Help Dialog to Give You Information You need to know 
+* Give You Access to change Icons with text or any other symbol
+* Add new script to show more information about your System
+* ALL-IN-ONE Gather All the Scripts in one place for easy Access
+* Add Help Dialog to Give You Information You need to know
+* Add workspace display script using i3-msg
 
 ---
 
-### Installation 
+### Installation
 
-```bash 
-git clone https://github.com/zakariaGatter/i3blocks-gate ~/.config/i3blocks/Blocks 
+```bash
+git clone https://gitlab.com/zakariagatter/i3blocks-gate
+mkdir -p ~/.local/bin
+cp Ubuntu/i3b-gate ~/.local/bin
 ```
 
-### Configuration 
 
-##### configuration
+### configuration
 ```sh
-[Bat]
-command=~/.config/i3blocks/Blocks/Ubuntu/block.sh [1-31]
+[NAME]
+command=i3b-gate [1-35]
 interval=5
 color=#XXXXXX
 ```
 
-### Support 
+### Support
 
-[Fiverr](https://www.fiverr.com/zakariagatter)
-
-[Donate](https://www.paypal.me/ZGatter)
-
-
-### [!] NOTE :
-- In some cases you need install the icons:
-  - Ubuntu
-  ```sh
-  apt-get install fonts-font-awesome lm-senser alsa-utils acpi xdotool mpd mpc ncmpcpp moc sysstat suckless-tools
-  ```
+ * [Patreon](https://www.patreon.com/gatter_linux)
