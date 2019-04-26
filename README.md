@@ -3,23 +3,23 @@
 Is a all in one collection of small script show you useful information about your system
 
 ## Installation requires:
-    * __Font Awesome__
-    * __lm-senser__
-    * __alsa-utils__
-    * __acpi__
-    * __mpd__
-    * __mpc__
-    * __ncmpcpp__
-    * __moc__
-    * __sysstat__
-    * __cmus__
-    * __xdg-utils__
-    * __ifconfig__
+* __Font Awesome__
+* __lm-senser__
+* __alsa-utils__
+* __acpi__
+* __mpd__
+* __mpc__
+* __ncmpcpp__
+* __moc__
+* __sysstat__
+* __cmus__
+* __xdg-utils__
+* __ifconfig__
 
 ---
 ## Help Dialog
 ```
-there is 35 deffirent script to use
+there is 36 deffirent script to use
 
 Almost all script use the same syntax
     i3b-gate [NUMBER] [ICON]
@@ -39,11 +39,11 @@ Explaine :
 
     Example : [1] 2 [*3]
 
-    [1] : Unfocued Workspaces
-    2   : the focused Workspace
+    [1]  : Unfocued Workspaces
+    2    : the focused Workspace
     [*3] : The Urgent workspace
 
-each 35 script and what they do
+each 36 script and what they do
 
  1 : Show CPU Usage
  2 : Show ALL CPUs Usage
