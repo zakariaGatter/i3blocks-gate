@@ -1,0 +1,462 @@
+#!/bin/env bash
+# Zakaria Barkouk ( Zakaria.gatter@gmail.com)
+
+#---------------------#
+# SHOW CPU INFO (TOP) #
+#---------------------#
+_BLOCK_1_(){ #{{{
+    mpstat | awk '/all/{print "'"${1:-} "'"$4}'
+} #}}}
+
+#--------------------#
+# SHOW ALL CPUS INFO #
+#--------------------#
+_BLOCK_2_(){ #{{{
+    mpstat -P ALL | awk -v icon=${1:-} 'BEGIN{printf "%s ", icon} {
+	if($3 ~ /^[0-9]/){
+	    printf "%s ", $4
+	}
+    }'
+} #}}}
+
+#--------------------------#
+# SHOW MEMORY USAGE (FREE) #
+#--------------------------#
+_BLOCK_3_(){ #{{{
+    free -h | awk '/^Mem:/{print "'"${1:-} "'"$3}'
+} #}}}
+
+#------------------------#
+# SHOW SWAP USAGE (FREE) #
+#------------------------#
+_BLOCK_4_(){ #{{{
+    free -h | awk -v icon=${1:-} '/^Swap:/{print "'"${1:-}"' "$3}'
+} #}}}
+
+#---------------------------#
+# SHOW DATE AND TIME (DATE) #
+#---------------------------#
+_BLOCK_5_(){ #{{{
+    date +"${1:-} "%D\ %R
+} #}}}
+
+#----------------------------#
+# SHOW BATTERY STATUS (ACPI) #
+#----------------------------#
+_BLOCK_6_(){ #{{{
+    Bat=$(acpi | awk '{gsub(",|%","",$4); print $4}');
+    adapt=$(acpi -a | awk '{print $3}');
+
+    if [ "$adapt" = "on-line" -a -n "$Bat" ];then
+        icon0="  "
+        icon1="  "
+        icon2="  "
+        icon3="  "
+        icon4="  "
+    elif [ "$adapt" = "on-line" ];then
+        icon0=""
+        icon1=""
+        icon2=""
+        icon3=""
+        icon4=""
+    else
+        icon0=""
+        icon1=""
+        icon2=""
+        icon3=""
+        icon4=""
+    fi
+
+    [ -z "$Bat" ] && echo "$icon0 $adapt" && return
+    [ "$Bat" -gt "100" ] && echo "$icon4 Full"
+    [ "$Bat" -gt "90" ] && echo "$icon3 $Bat%"
+    [ "$Bat" -gt "60" ] && echo "$icon2 $Bat%"
+    [ "$Bat" -gt "30" ] && echo "$icon1 $Bat%"
+    [ "$Bat" -lt "30" ] && echo "$icon0 $Bat%"
+} #}}}
+
+#----------------------#
+# SHOW DISK USAGE (DF) #
+#----------------------#
+_BLOCK_7_() { #{{{
+    df -h "${1:-/}" | awk '/\/dev\//{print "'"${2:-}"' "$3-G"/"$2}'
+} #}}}
+
+#----------------------#
+# SHOW KEYBOARD LAYOUT #
+#----------------------#
+_BLOCK_8_() { #{{{
+     awk -F '"' '/XKBLAYOUT/{print "'"${1:-} "'"$2}' /etc/default/keyboard
+} #}}}
+
+#----------------------#
+# SHOW SYSTEM LANGUAGE #
+#----------------------#
+_BLOCK_9_(){ #{{{
+    echo "${1:-} ${LANG/.UTF-8/}"
+} #}}}
+
+#------------------------------#
+# SHOW MACHINE UPTIME (UPTIME) #
+#------------------------------#
+_BLOCK_10_() { #{{{
+     uptime | awk '{sub("\,","",$3); print "'"${1:-} "'"$3}'
+} #}}}
+
+#----------------------#
+# SHOW TRASH SIZE (DU) #
+#----------------------#
+_BLOCK_11_() { #{{{
+    [ -d "$HOME/.local/share/Trash/files" ] && {
+        du -hc $HOME/.local/share/Trash/files | awk '/total$/{print "'"${1:-} "'"$1}'
+    } || {
+        echo "${1:-} ---"
+    }
+} #}}}
+
+#-------------------#
+# SHOW WINDOW USAGE #
+#-------------------#
+_BLOCK_12_() { #{{{
+    focus=$(xprop -id `xprop -root | awk '/^_NET_ACTIVE_WINDOW/{print $5}'` | awk -F '"' '/^WM_NAME/{print $2}')
+    if [ -z "$focus" ];then
+        echo "${1:-} Welcome"
+    else
+        [ "${#focus}" -gt "${2:-30}" ] && echo "${1:-} ${focus::${2:-30}} ..." || echo "${1:-} $focus"
+    fi
+} #}}}
+
+#-----------------------------------------#
+# SHOW MOCP PLAYING SONG AND STATUS (MOC) #
+#-----------------------------------------#
+_BLOCK_13_() { # {{{
+    Title=$(mocp -Q %title)
+    F_Title=$(basename `mocp -Q %file | tr " " "_"`)
+    Status=$(mocp -Q %state)
+
+    if [ "$Status" != "PLAY" ];then
+        echo "${1:-} Pause"
+    elif [ -z "$Title" ];then
+        echo "${1:-} ${F_Title::30}"
+    else
+        echo "${1:-} $Title"
+    fi
+} #}}}
+
+#------------------------------------------------------#
+# SHOW MPD PLAYING SONG AND STATUS (MPD; NCMPCCP, MPC) #
+#------------------------------------------------------#
+_BLOCK_14_() { #{{{
+local NCMP=$(mpc | awk '/^\[playing\]/{print $1}')
+
+if [ "$NCMP" = "[playing]" ];then
+    echo "${1:-} $(basename $(mpc current)) "
+else
+    echo "${1:-} Pause "
+fi
+} #}}}
+
+#-------------------------#
+# SHOW CPU TEMP (XSENSER) #
+#-------------------------#
+_BLOCK_15_() { #{{{
+    sensors | awk '/^CPU/{gsub("\+",""); print "'"${1:-} "'"$2}'
+} #}}}
+
+#-------------------------#
+# SHOW GPU TEMP (XSENSER) #
+#-------------------------#
+_BLOCK_16_() { #{{{
+    sensors | awk '/^GPU/{gsub("\+",""); print "'"${1:-} "'"$2}' | tail -1
+} #}}}
+
+#----------------------------------#
+# SHOW TOUCHPAD STATUS (SYSCLIENT) #
+#----------------------------------#
+_BLOCK_17_() { #{{{
+    [ "$(synclient -l | awk '/Touchpad/{print $3}')" = "0" ] && echo "${1:-} Enable" || echo "${1:-} Disable"
+} #}}}
+
+#---------------------------#
+# SHOW VOLUME STATUS (ALSA) #
+#---------------------------#
+_BLOCK_18_() { #{{{
+local Vol=$(amixer get Master | awk '/Mono:/{gsub("\[|\%|\]",""); print $4}')
+local Mute=$(amixer get Master | awk '/Mono:/{gsub("\[|\]",""); print $6}')
+
+if [ "$Mute" = "off" ];then
+    echo -e " --"
+else
+    if [ "$Vol" -gt "60" ];then
+        echo -e " $Vol%"
+    elif [ "$Vol" -gt "30" ];then
+        echo -e " $Vol%"
+    elif [ "$Vol" -lt "30" ];then
+        echo -e " $Vol%"
+    fi
+fi
+} #}}}
+
+#----------------------------------------------#
+# SHOW WIFI INFO ; IP ; CONNECTED NAME (NMCLI) #
+#----------------------------------------------#
+_BLOCK_19_() { #{{{
+while read -a W ;do
+    [ "${W[2]}" = "connected" ] && {
+	_ip=$(nmcli device show ${W[0]} | awk '/^IP4.ADDRESS/{print $NF}')
+	_name=$(nmcli device show ${W[0]} | awk '/^GENERAL.CONNECTION:/{$1=""; print $0}')
+	echo -n "${1:-} ${_ip%/*} (${_name} )"
+    } || {
+	echo -n "${1:-} ---"
+    }
+done< <(nmcli d | grep -w "wifi")
+echo -e ""
+} #}}}
+
+#-------------------------------------------#
+# SHOW ETHERNET INFO ; IP ; CONNECTED NAME  #
+#-------------------------------------------#
+_BLOCK_20_() { #{{{
+while read -a W ;do
+    [ "${W[2]}" = "connected" ] && {
+	_ip=$(nmcli device show ${W[0]} | awk '/^IP4.ADDRESS/{print $NF}')
+	_name=$(nmcli device show ${W[0]} | awk '/^GENERAL.CONNECTION:/{$1=""; print $0}')
+	echo -n "${1:-} ${_ip%/*} (${_name} ) "
+    } || {
+	echo -n "${1:-} ---"
+    }
+done< <(nmcli d | grep "ethernet")
+echo -e ""
+} #}}}
+
+
+#-----------------------------------------------#
+# SHOW WIFI INFO ; IP6 ; CONNECTED NAME (NMCLI) #
+#-----------------------------------------------#
+_BLOCK_21_() { #{{{
+while read -a W ;do
+    [ "${W[2]}" = "connected" ] && {
+	_ip=$(nmcli device show ${W[0]} | awk '/^IP6.ADDRESS/{print $NF}')
+	_name=$(nmcli device show ${W[0]} | awk '/^GENERAL.CONNECTION:/{$1=""; print $0}')
+	echo -n "${1:-} ${_ip%/*} (${_name} ) "
+    } || {
+	echo -n "${1:-} ---"
+    }
+done< <(nmcli d | grep "wifi")
+echo -e ""
+} #}}}
+
+#--------------------------------------------#
+# SHOW ETHERNET INFO ; IP6 ; CONNECTED NAME  #
+#--------------------------------------------#
+_BLOCK_22_() { #{{{
+while read -a W ;do
+    [ "${W[2]}" = "connected" ] && {
+	_ip=$(nmcli device show ${W[0]} | awk '/^IP6.ADDRESS/{print $NF}')
+	_name=$(nmcli device show ${W[0]} | awk '/^GENERAL.CONNECTION:/{$1=""; print $0}')
+	echo -n "${1:-} ${_ip%/*} (${_name} ) "
+    } || {
+	echo -n "${1:-} ---"
+    }
+done< <(nmcli d | grep "ethernet")
+echo -e ""
+} #}}}
+
+#-------------------------------#
+# SHOW PROSSES USE BY THIS USER #
+#-------------------------------#
+_BLOCK_23_() { #{{{
+    echo "${1:-} $(ps -U $USER | wc -l)"
+} #}}}
+
+#---------------------#
+# SHOW SYSTEM KERENEL #
+#---------------------#
+_BLOCK_24_() { #{{{
+    echo "${1:-} $(uname -r)"
+} #}}}
+
+#-----------------------------#
+# SHOW USB PLUG IN UR COMPUTE #
+#-----------------------------#
+_BLOCK_25_() { #{{{
+    echo "${1:-} $(lsblk -l -o 'TRAN' | grep -c "usb")"
+} #}}}
+
+#---------------------------------------#
+# SHOW TOTAL PKGS INSTALL IN YOUR SYSTE #
+#---------------------------------------#
+_BLOCK_26_() { #{{{
+    echo "${1:-} $(dpkg -l | grep -c "^ii")"
+} #}}}
+
+#--------------------------------------------#
+# CHECK IF THERE IS ANY UPDATE IN UR SYSTEM  #
+#--------------------------------------------#
+_BLOCK_27_() { #{{{
+    local U_PKGS=$(apt-get -s -o APT::Get::Show-User-Simulation-Note=0 dist-upgrade | grep "^\s\s" | wc -w);
+    echo "${1:-} $U_PKGS"
+} #}}}
+
+#-----------------#
+# SHOW UFW STATUS #
+#-----------------#
+_BLOCK_28_() { #{{{
+    [ "$(systemctl status ufw | awk '/Active:/{print $2}')" == "active" ] && echo "${1:-} On" || echo "${1:-} Off"
+} #}}}
+
+#-------------------------#
+# SHOW NUMBER LOCK STATUS #
+#-------------------------#
+_BLOCK_29_() { #{{{
+    [ "$(xset -q | awk '/00:/{print $8}')" == "on" ] && echo "${1:-} On" || echo "${1:-} Off"
+} #}}}
+
+#-----------------------#
+# SHOW BLUETOOTH STATUS #
+#-----------------------#
+_BLOCK_30_() { #{{{
+    [ "$(systemctl status bluetooth.target | awk '/Active:/{print $2}')" == "active" ] && echo "${1:-} On" || echo "${1:-} Off"
+} #}}}
+
+#------------------------#
+# SHOW CAPS LOCK STATUS  #
+#------------------------#
+_BLOCK_31_() { #{{{
+    [ "$(xset -q | awk '/00:/{print $4}')" == "on" ] && echo "${1:-} On" || echo "${1:-} Off"
+} #}}}
+
+#-----------------------------#
+# DISPLAY X SCREENSAVER STATE #
+#-----------------------------#
+_BLOCK_32_() { #{{{
+    [ "$(xdg-screensaver status)" != "enabled" ] && echo "${1:-} Off" || echo "${1:-} On"
+} #}}}
+
+#--------------------------------#
+# CALCULE MOUNT POINTS ON SYSTEM #
+#--------------------------------#
+_BLOCK_33_() { #{{{
+    echo "${1:-} $(cat /proc/mounts | grep -c "^/dev/sd*") "
+} #}}}
+
+#-------------------------#
+# SHOW CMUS PLAYING SONG  #
+#-------------------------#
+_BLOCK_34_() { #{{{
+    local CMUS_P=$(cmus-remote -Q | awk '/^status/{print $2}')
+    local CMUS_F=$(cmus-remote -Q | awk '/^file/{$1=""; print $2}')
+
+    if [ "$CMUS_P" = "Playing" ];then
+        echo "${1:-} $(basename $CMUS_F)"
+    else
+        echo "${1:-} Pause"
+    fi
+} #}}}
+
+#----------------------#
+# SHOW APPARMOR STATUS #
+#----------------------#
+_BLOCK_35_() { #{{{
+    [ "$(aa-enabled)" = "Yes" ] && {
+        echo "${1:-} On"
+    }||{
+        echo "${1:-} Off"
+    }
+} #}}}
+
+#-----------------------------#
+# SHOW TOTAL PACKAGES IN ARCH #
+#-----------------------------#{{{
+_BLOCK_36_(){
+    echo "${1:-} $(pacman -Q | grep -c "*")"
+}
+#}}}
+
+#--------------------#
+# SHOW I3 WORKSPACES #
+#--------------------#
+_BLOCK_37_() { #{{{
+i3-msg -t get_workspaces | awk -F , '{
+    for(i=1;i<=NF;i++){
+	if($i~"name"){
+	    gsub("\"name\":|\"","",$i)
+	    WK=$i
+	}
+	if($i~"focused"){
+	    gsub("\"focused\":","",$i)
+	    WKF=$i
+	}
+	if($i~"urgent"){
+	    gsub("\"urgent\":|\]|\}","",$i)
+	    if($i=="false" && WKF=="true"){
+		printf "%s ", WK
+	    }
+	    if($i=="false" && WKF=="false"){
+		printf"[%s] ", WK
+	    }
+	    if($i=="true" && WKF=="false"){
+		printf "[*%s] ", WK
+	    }
+	    if($i=="true" && WKF=="true"){
+		printf "*%s ", WK
+	    }
+	}
+    }
+}'
+} #}}}
+
+#-----------------#
+# SHOW USER NAME  #
+#-----------------#
+_BLOCK_38_(){ #{{{
+   echo -e "${1:-} $USER"
+} #}}}
+
+#-------------------#
+# SHOW VOLUME PULSE #
+#-------------------#
+_BLOCK_39_(){
+local Vol=$(pactl list sinks | awk '/Volume: front/{print $5-"%"}')
+local Mute=$(amixer get Master | awk '/Mono:/{gsub("\[|\]",""); print $6}')
+
+if [ "$Mute" = "off" ];then
+    echo -e " --"
+else
+    if [ "$Vol" -gt "60" ];then
+        echo -e " $Vol%"
+    elif [ "$Vol" -gt "30" ];then
+        echo -e " $Vol%"
+    elif [ "$Vol" -lt "30" ];then
+        echo -e " $Vol%"
+    fi
+fi
+}
+
+#------------------------#
+# USAGE AND HELP DIALOG  #
+#------------------------#
+_USAGE_(){ #{{{
+echo -e "
+i3b-gate : is a all in one collaction of small script
+    show you useful unformation about your system
+
+    There is 39 deffirent script to use
+    for more information you can see the 'README' file
+    or visite 'https://gitlab.com/zakariagatter/i3blocks-gate'
+
+SYNTAX :
+    i3b-gate [NUMBER] ...
+"
+} #}}}
+
+#----------------#
+# MAIN ARGUMENT  #
+#----------------#
+if [ "$1" -gt "39" ] || [ -z "$1" ] ;then
+    _USAGE_
+elif [ "$1" = "-h" ]; then
+    _USAGE_
+else
+    eval $(echo "_BLOCK_$1_ $2 $3")
+fi

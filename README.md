@@ -3,23 +3,24 @@
 Is a all in one collection of small script show you useful information about your system
 
 ## Installation requires:
-* __Font Awesome__
-* __lm-senser__
-* __alsa-utils__
-* __acpi__
-* __mpd__
-* __mpc__
-* __ncmpcpp__
-* __moc__
-* __sysstat__
-* __cmus__
-* __xdg-utils__
-* __ifconfig__
+* Font Awesome
+* lm-senser
+* alsa-utils
+* pulseaudio
+* acpi
+* mpd
+* mpc
+* ncmpcpp
+* moc
+* sysstat
+* cmus
+* xprop
+* ifconfig
 
 ---
 ## Help Dialog
 ```
-there is 36 deffirent script to use
+there is 38 deffirent script to use
 
 Almost all script use the same syntax
     i3b-gate [NUMBER] [ICON]
@@ -29,13 +30,14 @@ Except :
     12 : i3b-gate 12 [NUMBER] [ICON]
 
 No Argument :
-    34 : You give no argumment
     6  : You give no argumment
     18 : You give no argumment
+    37 : You give no argumment
+    39 : You give no argumment
 
 Explaine :
-    If you use 34, you get a status line about all workspaces u used on i3
-    34 don't show you the None used Workspace
+    If you use 37, you get a status line about all workspaces u used on i3
+    37 don't show you the None used Workspace
 
     Example : [1] 2 [*3]
 
@@ -62,25 +64,28 @@ each 36 script and what they do
 15 : Show CPU TEMP
 16 : Show GPU TEMP
 17 : Show Touchpad Status
-18 : show Volume Status
-19 : Show Wifi Info
-20 : Show Ethernet Info
-21 : Show Number of Prosses use by this current user
-22 : Show System Kernel
-23 : Show Usb Pluged in your system
-24 : Show Total packages in Your system (Ubuntu)
-25 : Show if there is any updates (Ubuntu)
-26 : Show UFW Status
-27 : Show NumberLock status
-28 : Show Bluetooth Status
-29 : Show CapsLock Status
-30 : Show x screensaver Status
-31 : Show Number of Mointed Points on System
-32 : Show Music Status on (CMUS)
-33 : Show Apparmor Status
-34 : Show i3 Workspaces Status
-35 : Show User NAME
+18 : show Volume Status (alsa)
+19 : Show Wifi Info IP4
+20 : Show Ethernet Info IP4
+21 : Show Wifi Info IP6
+22 : Show Ethernet Info IP6
+23 : Show Number of Prosses use by this current user
+24 : Show System Kernel
+25 : Show Usb Pluged in your system
+26 : Show Total packages in Your system (Ubuntu)
+27 : Show if there is any updates (Ubuntu)
+28 : Show UFW Status
+29 : Show NumberLock status
+30 : Show Bluetooth Status
+31 : Show CapsLock Status
+32 : Show x screensaver Status
+33 : Show Number of Mointed Points on System
+34 : Show Music Status on (CMUS)
+35 : Show Apparmor Status
 36 : Show Total packages in Your system (Arch)
+37 : Show i3 Workspaces Status
+38 : Show User NAME
+39 : show Volume Status (pulse)
 ```
 ---
 
@@ -106,11 +111,7 @@ cp Ubuntu/i3b-gate ~/.local/bin
 ### configuration
 ```sh
 [NAME]
-command=i3b-gate [1-35]
-interval=5
+command=i3b-gate [1-39]
+interval=[1-9]
 color=#XXXXXX
 ```
-
-### Support
-
- * [Patreon](https://www.patreon.com/gatter_linux)
