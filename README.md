@@ -15,7 +15,7 @@ Is a all in one collection of small script show you useful information about you
 * sysstat
 * cmus
 * xprop
-* ifconfig
+* Networkmanager
 
 ---
 ## Help Dialog
@@ -45,7 +45,7 @@ Explaine :
     2    : the focused Workspace
     [*3] : The Urgent workspace
 
-each 36 script and what they do
+each 39 script and what they do
 
  1 : Show CPU Usage
  2 : Show ALL CPUs Usage
@@ -74,7 +74,7 @@ each 36 script and what they do
 25 : Show Usb Pluged in your system
 26 : Show Total packages in Your system (Ubuntu)
 27 : Show if there is any updates (Ubuntu)
-28 : Show UFW Status
+28 : Show UFW Status (systemctl)
 29 : Show NumberLock status
 30 : Show Bluetooth Status
 31 : Show CapsLock Status
@@ -102,7 +102,7 @@ each 36 script and what they do
 ### Installation
 
 ```bash
-git clone https://gitlab.com/zakariagatter/i3blocks-gate
+git clone https://github.com/zakariagatter/i3blocks-gate
 mkdir -p ~/.local/bin
 cp Ubuntu/i3b-gate ~/.local/bin
 ```
