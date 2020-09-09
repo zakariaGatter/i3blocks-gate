@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # Zakaria Barkouk ( Zakaria.gatter@gmail.com)
 
 #---------------------#
@@ -30,14 +30,14 @@ _BLOCK_3_(){ #{{{
 # SHOW SWAP USAGE (FREE) #
 #------------------------#
 _BLOCK_4_(){ #{{{
-    free -h | awk -v icon=${1:-} '/^Swap:/{print "'"${1:-}"' "$3}'
+    free -h | awk '/^Swap:/{print "'"${1:-}"' "$3}'
 } #}}}
 
 #---------------------------#
 # SHOW DATE AND TIME (DATE) #
 #---------------------------#
 _BLOCK_5_(){ #{{{
-    date +"${1:-} "%D\ %R
+    date +"${1:-} %R %D"
 } #}}}
 
 #----------------------------#
@@ -100,7 +100,7 @@ _BLOCK_9_(){ #{{{
 # SHOW MACHINE UPTIME (UPTIME) #
 #------------------------------#
 _BLOCK_10_() { #{{{
-     uptime | awk '{sub("\,","",$3); print "'"${1:-} "'"$3}'
+     uptime | awk '{sub(",","",$4); print "'"${1:- } "'"$3 " " $4}'
 } #}}}
 
 #----------------------#
